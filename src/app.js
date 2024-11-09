@@ -75,6 +75,7 @@ app.use("/api", require("./middlewares/general.middleware").apikeyMiddleware);
 app.use("/api", require("./routes/productos.routes"));
 app.use("/api", require("./routes/categorias.routes"));
 app.use("/api", require("./routes/catalogo.routes"));
+app.use("/api", require("./routes/usuario.routes"));
 
 app.get("/", (req, res) => {
   res.send("¡Bienvenido a la API!");
