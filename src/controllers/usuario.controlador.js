@@ -12,8 +12,8 @@ const obtenerUsuarios = async (req, res) => {
 
 const crearUsuario = async (req, res) => {
   const {
-    nombre,
-    apellido,
+    nombres,
+    apellidos,
     numeroDeDocumento,
     tipoDeDocumento,
     correo,
@@ -26,8 +26,8 @@ const crearUsuario = async (req, res) => {
 
   try {
     const usuario = new Usuario({
-      nombre,
-      apellido,
+      nombres,
+      apellidos,
       numeroDeDocumento,
       tipoDeDocumento,
       correo,

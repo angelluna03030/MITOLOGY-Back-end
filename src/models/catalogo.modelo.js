@@ -17,6 +17,19 @@ const catalogoSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  descripcion: {
+    type: String,
+    required: true,
+  },
+  imagendescripcion: {
+    type: String,
+    required: true,
+  },
+  titulodescripcion: {
+    type:
+      String, required:
+      true,
+  },
 });
 
 const Catalogo = mongoose.model("Catalogo", catalogoSchema);

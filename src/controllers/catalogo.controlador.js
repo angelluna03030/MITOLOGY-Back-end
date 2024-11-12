@@ -134,6 +134,21 @@ const actualizarProductosDestacados = async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 };
+const actualizarDescripcion = async (req, res) => {
+  const { descripcion, imagendescripcion, titulodescripcion, productosdestacados } = req.body; try { // Encuentra el catálogo existente
+    const catalogo = await Catalogo.findOne({});
+     if (!catalogo) { return res.status(404).json({ message: "No se encontró ningún catálogo." }); } // Actualiza la descripción, imagen de descripción y título de descripción 
+    catalogo.descripcion = descripcion; 
+    catalogo.imagendescripcion = imagendescripcion; 
+    catalogo.titulodescripcion = titulodescripcion;
+    // Actualiza los productos destacados
+    catalogo.productosdestacados = productosdestacados || [];
+    // Guarda los cambios en la base de datos const 
+    catalogoActualizado = await catalogo.save();
+     res.status(200).json(catalogoActualizado);
+  } catch (e) { console.error(`Error: ${e}`); 
+    res.status(500).json({ error: e.message }); }
+};
 
 module.exports = {
   crearCatalogo,
@@ -142,4 +157,5 @@ module.exports = {
   actualizarImagenesParaGaleria,
   actualizarProductosDestacados,
   traerTodaLaInformacionDelCatalogo,
+  actualizarDescripcion
 };
